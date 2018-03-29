@@ -5,26 +5,22 @@ ODIR = objs/
 SDIR = srcs/
 LDIR = libft/
 IDIR = includes/
-NAME = fdf
+NAME = lem-in
 LIB = $(LDIR)libft.a
 DLIB = $(LDIR)dlibft.a
-FILES = main.c parse.c parse2.c hooks.c draw.c draw_line.c
+FILES = main.c input.c
 OBJS = $(FILES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(addprefix $(ODIR), $(OBJS))
 	@echo "\x1b[34m\nCompiling $@\x1b[0m"
-	@$(CC) $(CFLAGS) -I$(IDIR) -I /usr/local/include -o $@ $^ -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+	@$(CC) $(CFLAGS) -I$(IDIR) -o $@ $^
 
 $(LIB):
 	@echo "\x1b[35m\nCompiling $(notdir $@)\x1b[0m"
 	@$(MAKE) -C $(dir $@) $(notdir $@)
 	@echo "\x1b[35m\n$(notdir $@) compiled\x1b[0m"
-
-r: g
-	@echo "\x1b[32m\nRunning $(NAME)\n\x1b[0m"
-	@-for i in ./test_maps/*; do (./fdf $$i & ); done
 
 $(DLIB):
 	@echo "\x1b[35mCompiling libft with g flag\x1b[0m"
@@ -32,7 +28,7 @@ $(DLIB):
 
 g: $(DLIB)
 	@echo "\x1b[34mCompiling $(NAME) with g flag\x1b[0m"
-	@$(CC) $(CFLAGS) -I$(IDIR) -I /usr/local/include -g -o $(NAME) $(addprefix $(SDIR), $(FILES)) $(LDIR)dlibft.a -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+	@$(CC) $(CFLAGS) -I$(IDIR) -g -o $(NAME) $(addprefix $(SDIR), $(FILES)) $(LDIR)dlibft.a
 
 $(addprefix $(ODIR), %.o): $(addprefix $(SDIR), %.c)
 	@printf "."
@@ -50,6 +46,6 @@ fclean: clean_objs
 	@echo "\x1b[31mRemoving the $(NAME)\x1b[0m"
 	@rm -rf $(NAME) $(NAME).dSYM
 
-re: 
+re:
 	@$(MAKE) fclean
-	@$(MAKE) 
+	@$(MAKE)
