@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:07:26 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/29 18:01:00 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/29 18:28:37 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	t_room	*rooms;
+	t_list	*rooms;
 	int		ants_number;
 
 	rooms = NULL;

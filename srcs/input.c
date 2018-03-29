@@ -6,15 +6,29 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:14:37 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/29 18:18:15 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/29 19:44:03 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static char	err()
+static void	del(void *ptr)
 {
+	t_room	*room;
+
+	room = ptr;
+	if (room->name)
+		free(room->name);
+	if (room->way)
+		free(room->way);
+}
+
+static char	err(t_list **rooms)
+{
+	//check this for leaks
 	ft_printf("{red}Error{eoc}\n");
+	if (*rooms)
+		ft_lstdel(rooms, &del);
 	return (-1);
 }
 
@@ -26,7 +40,7 @@ static char	get_ants_number(int *ants_number)
 	ret = 1;
 	while (42)
 	{
-		if ((get_next_line(0, &str)) != 1)
+		if (get_next_line(0, &str) != 1)
 			return (-1);
 		if (*str == '#')
 		{
@@ -44,10 +58,15 @@ static char	get_ants_number(int *ants_number)
 	}
 }
 
-char	get_input(t_room **rooms, int *ants_number)
+char	get_input(t_list **rooms, int *ants_number)
 {
+	int		state;
+
 	*rooms = NULL;
+	state = 0;
 	if (get_ants_number(ants_number) == -1)
-		return (err());
+		return (err(rooms));
+	if (get_rooms(rooms) == -1)
+		return (err(rooms));
 	return (0);
 }

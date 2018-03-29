@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 15:25:07 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/29 17:15:20 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/29 19:43:21 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct					s_ant
 	int		*way;
 };
 
-char	get_input(t_room **room, int *ants_number);
+char	get_input(t_list **room, int *ants_number);
+char	get_rooms(t_list **rooms);
 
 #endif
