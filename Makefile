@@ -8,7 +8,7 @@ IDIR = includes/
 NAME = lem-in
 LIB = $(LDIR)libft.a
 DLIB = $(LDIR)dlibft.a
-FILES = err.c get_ants.c get_links.c get_rooms.c get_ways.c input.c main.c
+FILES = display.c err.c get_ants.c get_links.c get_rooms.c get_ways.c input.c main.c
 OBJS = $(FILES:.c=.o)
 
 all: $(NAME)

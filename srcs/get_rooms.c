@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:05:15 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 12:54:09 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:25:33 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,11 @@ static char	put_room(char *str, t_data *data)
 	}
 	if (check_dupl(room, data->rooms) == 1)
 		return (error(list));
-	room->num = ++data->rooms_amount;
+	data->rooms_amount++;
 	if (data->tmp)
 	{
 		if (data->tmp == 1)
 		{
-			room->way_to = malloc(sizeof(int));
-			room->way_to[0] = room->num;
-			room->way_len = 1;
 			room->start = 1;
 			data->start = room;
 		}

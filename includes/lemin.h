@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 15:25:07 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 12:53:04 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:25:00 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ struct					s_data
 
 struct					s_room
 {
-	int		num;
 	char	*name;
 	int		coords[2];
 	t_list	*connections;
-	int		*way_to;
-	int		way_len;
+	t_way	*way_to;
 	char	start;
 	char	end;
 	char	checked;
@@ -47,7 +45,7 @@ struct					s_room
 
 struct					s_way
 {
-	int		*way;
+	t_room	**way;
 	int		ants;
 	int		len;
 };
@@ -66,6 +64,7 @@ char	get_ways(t_data *data);
 
 char	err(t_data *data);
 void	print_data(t_data data);
+void	print_input(t_data *data);
 void	del_room(void *ptr);
 
 #endif
