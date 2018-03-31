@@ -1,0 +1,9 @@
+input
+input2
+lem-in
+lem-in.dSYM
+objs/*.o
+plan.txt
+tags
+.ycm_extra_conf.py
+*.swp

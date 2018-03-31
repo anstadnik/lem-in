@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:41:30 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/30 18:55:51 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 11:42:03 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	get_ants(t_data *data)
 				ret = -1;
 		free(str);
 	}
-	if (ret == -1)
+	if (ret == -1 || !data->ants_amount)
 		ft_printf("{red}Error with ants{eoc}");
-	return (ret);
+	return (ret != -1 && data->ants_amount ? 0 : -1);
 }

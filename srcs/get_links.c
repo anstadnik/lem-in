@@ -6,21 +6,13 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:37:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/30 18:50:42 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 12:50:35 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-/* static char	get_links(char **str, t_list *rooms) */
-/* { */
-/* 	//comment */
-/* 	//if start or end error */
-/* 	//links */
-
-/* } */
-
-static char	err(char *n1, char *n2)
+static char	error(char *n1, char *n2)
 {
 	free(n1);
 	free(n2);
@@ -51,7 +43,7 @@ static char	connect_rooms(char *n1, char *n2, t_list *rooms)
 	}
 	ft_lstpushf(&r1->connections, &r2, sizeof(t_room *));
 	ft_lstpushf(&r2->connections, &r1, sizeof(t_room *));
-	return (0);
+	return (1);
 }
 
 char		get_link(char *str, t_data *data)
@@ -65,8 +57,6 @@ char		get_link(char *str, t_data *data)
 	dash = 0;
 	if (ft_strchr(str, ' ') || (dash = ft_strsrch(str, '-')) == -1 || ft_strchr(str + dash + 1, '-'))
 	{
-		ft_printf("{blue}%d\n{eoc}", dash);
-		ft_printf("{blue}%s\n{eoc}", str);
 		ft_printf("{red}Error in link %s{eoc}\n", str);
 		return (-1);
 	}
@@ -75,7 +65,7 @@ char		get_link(char *str, t_data *data)
 	if (!ft_strcmp(n1, n2))
 	{
 		ft_printf("{red}Same name in links{eoc}\n", str);
-		return (err(n1, n2));
+		return (error(n1, n2));
 	}
 	return (connect_rooms(n1, n2, data->rooms));
 }
