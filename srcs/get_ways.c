@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 12:51:52 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 19:04:08 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 20:17:18 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ char	get_ways(t_data *data)
 	t_room	*cur;
 	char	stop;
 
-	if (data->start_end[0] != 1 || data->start_end[1] != 1)
+	if (!data->links_amount || data->start_end[0] != 1 || data->start_end[1] != 1)
 	{
-		ft_printf("{red}No end or start\n{eoc}");
+		ft_printf("{red}%s\n{eoc}", data->links_amount ? "No end or start" : "No links");
 		return (err(data));
 	}
 	stop = 0;
@@ -111,8 +111,6 @@ char	get_ways(t_data *data)
 	{
 		stop = 1;
 		initialize_start(&stack, data);
-		if (!stack->next)
-			return (err(data));
 		while (stack)
 		{
 			cur = *(t_room **)stack->content;
@@ -126,5 +124,5 @@ char	get_ways(t_data *data)
 		}
 	}
 	/* clear(data, stack); */
-	return (0);
+	return (data->ways ? 0 : -1);
 }

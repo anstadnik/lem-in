@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:41:30 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 18:55:39 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:16:07 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	get_ants(t_data *data)
 		ft_lstpushb(&data->input, str, ft_strlen(str) + 1);
 		if (*str == '#')
 		{
-			if (!ft_strncmp(str, "##start", 7) || !ft_strncmp(str, "##end", 5))
+			if (!ft_strcmp(str, "##start") || !ft_strcmp(str, "##end"))
 				ret = -1;
 		}
 		else

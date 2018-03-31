@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:37:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 18:57:57 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 20:20:30 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	connect_rooms(char *n1, char *n2, t_list *rooms)
 	if (!r1 || !r2)
 	{
 		ft_printf("{red}Not existing room %s-%s{eoc}\n", n1, n2);
-		return (-1);
+		return (error(n1, n2));
 	}
 	ft_lstpushf(&r1->connections, &r2, sizeof(t_room *));
 	ft_lstpushf(&r2->connections, &r1, sizeof(t_room *));
@@ -54,7 +54,7 @@ char		get_link(char *str, t_data *data)
 	char	*n2;
 	ssize_t	dash;
 
-	if (data->tmp)
+	if (data->tmp || !data->rooms)
 		return (-1);
 	if (*str == '#')
 		return (ft_strncmp(str, "##start", 7) && ft_strncmp(str, "##end", 5) ? 1 : -1);
@@ -71,5 +71,6 @@ char		get_link(char *str, t_data *data)
 		ft_printf("{red}Same name in links{eoc}\n", str);
 		return (error(n1, n2));
 	}
+	data->links_amount++;
 	return (connect_rooms(n1, n2, data->rooms));
 }

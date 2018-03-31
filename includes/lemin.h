@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 15:25:07 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 18:02:45 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:23:50 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct					s_data
 	t_list				*input;
 	int					tmp;
 	int					rooms_amount;
+	int					links_amount;
 	char				start_end[2];
 	int					ants_amount;
 	t_list				*ways;
