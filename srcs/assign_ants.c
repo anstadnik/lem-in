@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   assign_ants.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/29 17:07:26 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:49:28 by astadnik         ###   ########.fr       */
+/*   Created: 2018/03/31 17:18:00 by astadnik          #+#    #+#             */
+/*   Updated: 2018/03/31 17:26:13 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int	main(void)
+void	assign_ants(t_data *data)
 {
-	t_data	data;
+	int		ants;
+	t_list	*ways;
+	t_way	*way;
+	int		steps;
 
-	ft_bzero(&data, sizeof(t_data));
-	if (get_input(&data) == -1)
-		return (-1);
-	if (get_ways(&data) == -1)
-		return (-1);
-	print_input(&data);
-	assign_ants(&data);
-	/* print_data(data); */
-	output(&data);
-	sleep(3);
-	return (0);
+	ants = data->ants_amount;
+	steps = 1;
+	while (ants > 0)
+	{
+		ways = data->ways;
+		while (ways)
+		{
+			way = ways->content;
+			if (way->len <= steps)
+			{
+				way->ants++;
+				ants--;
+			}
+			ways = ways->next;
+		}
+		steps++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 15:25:07 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 14:25:00 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 17:42:45 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ struct					s_room
 	char	start;
 	char	end;
 	char	checked;
+	char	used;
 };
 
 struct					s_way
@@ -52,8 +53,10 @@ struct					s_way
 
 struct					s_ant
 {
+	char	finished;
 	int		num;
-	int		*way;
+	int		cur_step;
+	t_way	*way;
 };
 
 char	get_input(t_data *data);
@@ -61,6 +64,8 @@ char	get_ants(t_data *data);
 char	get_room(char *str, t_data *data);
 char	get_link(char *str, t_data *data);
 char	get_ways(t_data *data);
+void	assign_ants(t_data *data);
+void	output(t_data *data);
 
 char	err(t_data *data);
 void	print_data(t_data data);

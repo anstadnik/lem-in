@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 14:11:10 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 14:28:57 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 17:19:30 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	print_rooms(t_list *rooms)
 		ft_printf("{yellow}name = %s, coords = [%d, %d]",
 				room_tmp->name, room_tmp->coords[0], room_tmp->coords[1]);
 		if (room_tmp->start)
-			ft_printf(", start");
+			ft_printf(", {magenta}start{eoc}");
 		if (room_tmp->end)
-			ft_printf(", end");
+			ft_printf(", {magenta}end{eoc}");
 		/* ft_printf("{red}POTATO{eoc}"); */
 		if (room_tmp->way_to)
 		{
@@ -55,7 +55,7 @@ static void	print_rooms(t_list *rooms)
 			ft_printf("{green}No connections\n{eoc}");
 
 		rooms = rooms->next;
-		ft_printf("\n\n");
+		ft_printf("\n");
 	}
 
 }
@@ -88,7 +88,7 @@ void	print_data(t_data data)
 		list_tmp = list_tmp->next;
 	}
 	ft_printf("{green}starts amount = %d, ends amount = %d\n{eoc}", data.start_end[0], data.start_end[1]);
-	ft_printf("{green}rooms_amount = %d\n\n{eoc}", data.rooms_amount);
+	ft_printf("{green}rooms_amount = %d, ants_amount = %d\n\n{eoc}", data.rooms_amount, data.ants_amount);
 	ft_printf("{blue}################################################\n\n{eoc}");
 }
 
