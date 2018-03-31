@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:14:37 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 20:26:15 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:06:56 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	get_rooms_and_links(t_data *data)
 	}
 }
 
-char	get_input(t_data *data)
+char		get_input(t_data *data)
 {
 	int		state;
 

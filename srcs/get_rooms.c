@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:05:15 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 18:44:57 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:42:36 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,11 @@ static char	put_room(char *str, t_data *data)
 	}
 	if (check_dupl(room, data->rooms) == 1)
 		return (error(list));
-	data->rooms_amount++;
+	data->rooms_am++;
 	if (data->tmp)
 	{
-		if (data->tmp == 1)
-		{
-			room->start = 1;
+		if (data->tmp == 1 && (room->start = 1))
 			data->start = room;
-		}
 		else
 			room->end = 1;
 		data->tmp = 0;
@@ -87,20 +84,20 @@ static char	put_room(char *str, t_data *data)
 	return (0);
 }
 
-char	get_room(char *str, t_data *data)
+char		get_room(char *str, t_data *d)
 {
 	if (*str == '#')
 	{
 		if (!ft_strcmp(str, "##start") || !ft_strcmp(str, "##end"))
 		{
-			if (!data->tmp)
-				data->tmp = str[2] == 'e' ? 2 : 1;
+			if (!d->tmp)
+				d->tmp = str[2] == 'e' ? 2 : 1;
 			else
 				return (-1);
-			data->start_end[str[2] == 'e']++;
+			d->start_end[str[2] == 'e']++;
 		}
 	}
 	else
-		return (ft_strchr(str, ' ') ? put_room(str, data) : get_link(str, data));
+		return (ft_strchr(str, ' ') ? put_room(str, d) : get_link(str, d));
 	return (0);
 }

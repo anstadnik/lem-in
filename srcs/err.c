@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 19:16:53 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 12:53:53 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:10:06 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	del_room(void *ptr)
 
 char	err(t_data *data)
 {
-	//check this for leaks
 	ft_printf("{red}Error{eoc}\n");
 	if (data->rooms)
 		ft_lstdel(&data->rooms, &del_room);

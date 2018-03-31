@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 12:51:52 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 20:17:18 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:24:58 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	clear(t_data *data, t_list *stack)
 	while (rooms)
 	{
 		((t_room *)rooms->content)->checked = 0;
-		if (!((t_room *)rooms->content)->used && ((t_room *)rooms->content)->way_to)
+		if (!((t_room *)rooms->content)->used &&
+				((t_room *)rooms->content)->way_to)
 		{
 			free(((t_room *)rooms->content)->way_to->way);
 			free(((t_room *)rooms->content)->way_to);
@@ -95,34 +96,31 @@ static void	initialize_start(t_list **stack, t_data *data)
 	ft_memcpy(data->start->way_to, &way, sizeof(t_way));
 }
 
-char	get_ways(t_data *data)
+char		get_ways(t_data *d)
 {
 	t_list	*stack;
 	t_room	*cur;
 	char	stop;
 
-	if (!data->links_amount || data->start_end[0] != 1 || data->start_end[1] != 1)
+	if (!d->links_am || d->start_end[0] != 1 || d->start_end[1] != 1)
 	{
-		ft_printf("{red}%s\n{eoc}", data->links_amount ? "No end or start" : "No links");
-		return (err(data));
+		ft_printf("{red}No %s\n{eoc}", d->links_am ? "end or start" : "links");
+		return (err(d));
 	}
 	stop = 0;
-	while (!stop)
+	while (!stop && (stop = 1))
 	{
-		stop = 1;
-		initialize_start(&stack, data);
-		while (stack)
+		initialize_start(&stack, d);
+		while (stack && (cur = *(t_room **)stack->content))
 		{
-			cur = *(t_room **)stack->content;
 			ft_lstdelnode(&stack, stack);
-			if (process(data, cur, &stack))
+			if (process(d, cur, &stack))
 			{
 				stop = 0;
-				clear(data, stack);
+				clear(d, stack);
 				break ;
 			}
 		}
 	}
-	/* clear(data, stack); */
-	return (data->ways ? 0 : -1);
+	return (d->ways ? 0 : -1);
 }

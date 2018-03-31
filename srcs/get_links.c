@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:37:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 20:20:30 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:26:30 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ char		get_link(char *str, t_data *data)
 	if (data->tmp || !data->rooms)
 		return (-1);
 	if (*str == '#')
-		return (ft_strncmp(str, "##start", 7) && ft_strncmp(str, "##end", 5) ? 1 : -1);
+		return (ft_strcmp(str, "##start") && ft_strcmp(str, "##end") ? 1 : -1);
 	dash = 0;
-	if (ft_strchr(str, ' ') || (dash = ft_strsrch(str, '-')) == -1 || ft_strchr(str + dash + 1, '-'))
+	if (ft_strchr(str, ' ') || (dash = ft_strsrch(str, '-')) == -1 ||
+			ft_strchr(str + dash + 1, '-'))
 	{
 		ft_printf("{red}Error in link %s{eoc}\n", str);
 		return (-1);
@@ -71,6 +72,6 @@ char		get_link(char *str, t_data *data)
 		ft_printf("{red}Same name in links{eoc}\n", str);
 		return (error(n1, n2));
 	}
-	data->links_amount++;
+	data->links_am++;
 	return (connect_rooms(n1, n2, data->rooms));
 }

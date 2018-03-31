@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 17:18:00 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:26:13 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:25:53 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	assign_ants(t_data *data)
 	t_way	*way;
 	int		steps;
 
-	ants = data->ants_amount;
+	ants = data->ants_am;
 	steps = 1;
 	while (ants > 0)
 	{

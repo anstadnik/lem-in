@@ -6,19 +6,25 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:41:30 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 19:16:07 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 21:35:18 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-char	get_ants(t_data *data)
+static char	error(char **str)
+{
+	ft_printf("{red}Error with ants\n{eoc}");
+	if (*str)
+		ft_memdel((void **)str);
+	return (-1);
+}
+
+char		get_ants(t_data *data)
 {
 	char	*str;
-	char	ret;
 
-	ret = 1;
-	while (ret == 1)
+	while (42)
 	{
 		if (get_next_line(0, &str) != 1)
 			return (-1);
@@ -26,19 +32,15 @@ char	get_ants(t_data *data)
 		if (*str == '#')
 		{
 			if (!ft_strcmp(str, "##start") || !ft_strcmp(str, "##end"))
-				ret = -1;
+				return (error(&str));
+		}
+		else if (ft_isinteger(str) == 0)
+		{
+			data->ants_am = ft_atoi(str);
+			return (0);
 		}
 		else
-			if (ft_isinteger(str) == 0)
-			{
-				data->ants_amount = ft_atoi(str);
-				ret = 0;
-			}
-			else
-				ret = -1;
-		free(str);
+			return (error(&str));
+		ft_memdel((void **)&str);
 	}
-	if (ret == -1 || !data->ants_amount)
-		ft_printf("{red}Error with ants\n{eoc}");
-	return (ret != -1 && data->ants_amount ? 0 : -1);
 }
