@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 12:51:52 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:16:45 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:04:08 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ static char	add_way(t_data *data, t_room *room, t_list **stack, t_room *cur)
 	way.way = malloc(sizeof(t_way *) * way.len);
 	ft_memcpy(way.way, room->way_to->way, sizeof(t_way *) * room->way_to->len);
 	way.way[room->way_to->len] = cur;
-	if (cur->end)
+	if (cur->end && !(room->start && cur->visited_from_start))
 	{
 		i = 0;
 		while (i < way.len - 1)
 			way.way[i++]->used = 1;
 		ft_lstpushf(&data->ways, &way, sizeof(t_way));
+		if (room->start)
+			cur->visited_from_start = 1;
 		return (1);
 	}
 	cur->checked = 1;
@@ -101,7 +103,7 @@ char	get_ways(t_data *data)
 
 	if (data->start_end[0] != 1 || data->start_end[1] != 1)
 	{
-		ft_printf("{red}No end or start{eoc}");
+		ft_printf("{red}No end or start\n{eoc}");
 		return (err(data));
 	}
 	stop = 0;
@@ -109,6 +111,8 @@ char	get_ways(t_data *data)
 	{
 		stop = 1;
 		initialize_start(&stack, data);
+		if (!stack->next)
+			return (err(data));
 		while (stack)
 		{
 			cur = *(t_room **)stack->content;

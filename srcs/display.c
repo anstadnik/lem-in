@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 14:11:10 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:19:30 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:28:53 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	print_input(t_data *data)
 		ft_printf("%s\n", lst->content);
 		lst = lst->next;
 	}
+	ft_printf("\n");
 	ft_lstdel(&data->input, &free);
 	ft_memdel((void **)&data->input);
 }

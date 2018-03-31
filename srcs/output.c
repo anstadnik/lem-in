@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 17:28:53 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:48:28 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:41:58 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	move_ants(t_data *data)
 {
 	t_list	*ants;
 	t_ant	*ant;
-	char	first;
+	/* char	first; */
 
 	ants = data->ants;
-	first = 1;
+	/* first = 1; */
 	while(ants)
 	{
 		ant = ants->content;
@@ -28,11 +28,11 @@ static void	move_ants(t_data *data)
 			ants = ants->next;
 			continue ;
 		}
-		if (first)
-			first--;
-		else
-			ft_printf(" ");
-		ft_printf("L%d-%s", ant->num, ant->way->way[ant->cur_step++]->name);
+		/* if (first) */
+		/* 	first--; */
+		/* else */
+		/* 	ft_printf(" "); */
+		ft_printf("L%d-%s ", ant->num, ant->way->way[ant->cur_step++]->name);
 		if (ant->cur_step == ant->way->len)
 			ant->finished = 1;
 		ants = ants->next;

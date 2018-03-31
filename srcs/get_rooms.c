@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:05:15 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 14:25:33 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:44:57 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	get_room(char *str, t_data *data)
 {
 	if (*str == '#')
 	{
-		if (!ft_strncmp(str, "##start", 7) || !ft_strncmp(str, "##end", 5))
+		if (!ft_strcmp(str, "##start") || !ft_strcmp(str, "##end"))
 		{
 			if (!data->tmp)
 				data->tmp = str[2] == 'e' ? 2 : 1;

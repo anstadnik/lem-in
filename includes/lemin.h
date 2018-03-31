@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 15:25:07 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 17:42:45 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:02:45 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct					s_room
 	char	end;
 	char	checked;
 	char	used;
+	char	visited_from_start;
 };
 
 struct					s_way

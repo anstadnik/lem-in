@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:37:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 14:41:36 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:57:57 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char		get_link(char *str, t_data *data)
 	char	*n2;
 	ssize_t	dash;
 
+	if (data->tmp)
+		return (-1);
 	if (*str == '#')
 		return (ft_strncmp(str, "##start", 7) && ft_strncmp(str, "##end", 5) ? 1 : -1);
 	dash = 0;
