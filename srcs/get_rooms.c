@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:05:15 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 21:42:36 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/04/01 12:34:09 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	check_dupl(t_room *room, t_list *rooms)
 
 static char	parse_room(char *str, t_room *room)
 {
-	if (*str == 'L' || *str == '#' || *str == ' ' || !*str)
+	if (*str == 'L' || *str == '#' || !*str || ft_isspace(*str))
 		return (-1);
 	room->name = ft_strsub(str, 0, ft_strsrch(str, ' '));
 	if (!(str = ft_strchr(str, ' ')) || ft_isinteger(++str) == -1)

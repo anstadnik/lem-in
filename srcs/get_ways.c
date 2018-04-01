@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 12:51:52 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 21:24:58 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/04/01 13:10:07 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,5 @@ char		get_ways(t_data *d)
 			}
 		}
 	}
-	return (d->ways ? 0 : -1);
+	return (0);
 }
