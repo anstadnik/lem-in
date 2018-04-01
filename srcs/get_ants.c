@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:41:30 by astadnik          #+#    #+#             */
-/*   Updated: 2018/04/01 13:19:15 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/04/01 13:49:40 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char		get_ants(t_data *data)
 			return (error(&str));
 		ft_lstpushb(&data->input, str, ft_strlen(str) + 1);
 		if ((ret = check_str(str, data)) != 2)
+		{
+			ft_memdel((void **)&str);
 			return (ret);
+		}
 		ft_memdel((void **)&str);
 	}
 }
