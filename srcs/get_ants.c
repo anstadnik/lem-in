@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 13:41:30 by astadnik          #+#    #+#             */
-/*   Updated: 2018/04/01 13:51:56 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/04/01 13:54:01 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static char	check_str(char *str, t_data *data)
 		while (str[i])
 			if (!ft_isdigit(str[i++]))
 				return (error(&str));
+		ft_memdel((void **)&str);
 		return (data->ants_am ? 0 : error(&str));
 	}
 	else
@@ -54,11 +55,7 @@ char		get_ants(t_data *data)
 			return (error(&str));
 		ft_lstpushb(&data->input, str, ft_strlen(str) + 1);
 		if ((ret = check_str(str, data)) != 2)
-		{
-			if (str)
-				ft_memdel((void **)&str);
 			return (ret);
-		}
 		ft_memdel((void **)&str);
 	}
 }
