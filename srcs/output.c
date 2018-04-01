@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 17:28:53 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/31 21:27:46 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/04/01 13:38:58 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	move_ants(t_data *data)
 			first--;
 		else
 			ft_printf(" ");
-		ft_printf("L%d-%s ", ant->num, ant->way->way[ant->cur_step++]->name);
+		ft_printf("L%d-%s", ant->num, ant->way->way[ant->cur_step++]->name);
 		if (ant->cur_step == ant->way->len)
 			ant->finished = 1;
 		ants = ants->next;
